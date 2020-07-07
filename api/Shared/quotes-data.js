@@ -14,6 +14,11 @@ async function getQuotes() {
   };
   const items = await dao.find(querySpec);
 
+  items = [{
+    id: 1,
+    quoteText: 'Je pense donc je suis.'
+  }];
+
   return items;
 };
 
