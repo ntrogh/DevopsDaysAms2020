@@ -9,13 +9,15 @@ const getDao = () => {
 module.exports = async function (context, req) {
     context.log('JavaScript HTTP trigger function processed a request.');
 
+    const repoUrl = req.query.repoUrl;
+
     // input parameters:
     //  - repo URL
     // output parameters:
     //  - octocat quote
-    if (req.query.repoUrl) {
+    if (repoUrl) {
         // Check if GitHub repo exists and that there is a GitHub action associated with it
-        if (!await checkGitHubRepo(req.query.repoUrl)) {
+        if (!await checkGitHubRepo(repoUrl)) {
             context.res = {
                 status: 400,
                 body: "Please provide a valid GitHub repository URL"
@@ -30,16 +32,30 @@ module.exports = async function (context, req) {
                 body: `{ "quote": "${quoteText}", "octocat_quote": "${quote}" }`
             };
 
-            // Add quote to zen quote wall (CosmosDB)
+            // Create a data object to be stored in CosmosDB
             let quoteObject = {
                 quote: quote,
                 quoteText: quoteText,
                 date: new Date(),
-                repoUrl: req.query.repoUrl
+                repoUrl: repoUrl
             }
 
+            const querySpec = {
+                query: `SELECT * from c WHERE c["repoUrl"] = "${repoUrl}"`
+            };
+
             const dao = getDao();
-            await dao.addItem(quoteObject);
+            const items = await dao.find(querySpec);
+            console.log(items);
+            if (items.length == 0) {
+                // Only add the quote if there isn't one yet for this repo
+                console.log(`Adding quote '${quoteText}' for repo ${repoUrl}.`);
+
+                // Add quote to zen quote wall (CosmosDB)
+                await dao.addItem(quoteObject);
+            } else {
+                console.log(`Ignoring insert - already a quote for repo ${repoUrl}.`);
+            }
         }
     }
     else {
