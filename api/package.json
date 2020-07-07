@@ -1,4 +1,4 @@
-  {
+{
   "name": "actionwall",
   "version": "1.0.0",
   "description": "",
@@ -7,6 +7,7 @@
     "test": "echo \"No tests yet...\""
   },
   "dependencies": {
+    "@azure/cosmos": "^3.7.4",
     "node-fetch": "^2.6.0"
   },
   "devDependencies": {}
