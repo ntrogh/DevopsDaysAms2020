@@ -1,4 +1,4 @@
-const data = require('../shared/koedo-data');
+const data = require('../shared/quotes-data');
 
 module.exports = async function (context, req) {
   try {

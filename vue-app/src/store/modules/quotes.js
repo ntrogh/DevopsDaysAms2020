@@ -2,7 +2,7 @@ import axios from 'axios';
 import API from '../config';
 import { parseList } from './action-utils';
 import {
-  GET_KOEDOS,
+  GET_QUOTES,
 } from './mutation-types';
 
 const captains = console;
@@ -11,20 +11,20 @@ export default {
   strict: process.env.NODE_ENV !== 'production',
   namespaced: true,
   state: {
-    koedos: [],
+    quotes: [],
   },
   mutations: {
-    [GET_KOEDOS](state, koedos) {
-      state.koedos = koedos;
+    [GET_QUOTES](state, quotes) {
+      state.quotes = quotes;
     },
   },
   actions: {
     // actions let us get to ({ state, getters, commit, dispatch }) {
-    async getKoedosAction({ commit }) {
+    async getQuotesAction({ commit }) {
       try {
         const response = await axios.get(`${API}/quotes`);
         const quotes = parseList(response);
-        commit(GET_KOEDOS, quotes);
+        commit(GET_QUOTES, quotes);
         return quotes;
       } catch (error) {
         captains.error(error);
@@ -33,6 +33,6 @@ export default {
     },
   },
   getters: {
-    koedos: (state) => state.koedos,
+    quotes: (state) => state.quotes,
   },
 };

@@ -13,11 +13,6 @@ export default new Router({
       redirect: '/home',
     },
     {
-      path: '/koedos',
-      name: 'koedos',
-      component: () => import(/* webpackChunkName: "koedos" */ './views/koedos/koedos.vue'),
-    },
-    {
       path: '/home',
       name: 'home',
       // route level code-splitting

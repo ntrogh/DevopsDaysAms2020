@@ -13,14 +13,13 @@ export default {
       rel="noopener noreferrer"
     >
       <i aria-hidden="true">
-        <img class="image is-128x128" src="../assets/Koedo-logo.png"/>
+        <img  src="../assets/devopsdaysams-logo-square.jpg"/>
       </i>
     </a>
     <router-link to="/" class="navbar-item nav-home">
-      <img src="../assets/Koedo-title.png" />
-      <!-- <span class="brand-first">KOEDOS</span> -->
-      <!-- <span class="brand-second">AT</span>
-      <span class="brand-third">HOME</span> -->
+      <span class="brand-first">Wall</span>
+      <span class="brand-second">of</span>
+      <span class="brand-third">ZEN</span>
     </router-link>
   </div>
 </template>

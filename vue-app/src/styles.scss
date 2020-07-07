@@ -120,17 +120,22 @@ $navbar-item-img-max-height: 5rem;
 
 header {
   font-weight: bold;
-  font-family: Arial;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   span {
     letter-spacing: 0px;
     &.brand-first {
-      color: #fff;
+      color: darkslategray;
+      font-size: 3em;
     }
     &.brand-second {
-      color: #ccc;
+      color: darkslategray;
+      font-size: 3em;
+      margin-left: .2em;
     }
     &.brand-third {
       color: $primary-light;
+      font-size: 3em;
+      margin-left: .3em;
     }
   }
   .navbar-item.nav-home {

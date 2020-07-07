@@ -4,9 +4,9 @@ import CardContent from '@/components/card-content.vue';
 const captains = console;
 
 export default {
-  name: 'KoedoList',
+  name: 'QuoteList',
   props: {
-    koedos: {
+    quotes: {
       type: Array,
       default: () => [],
     },
@@ -19,13 +19,9 @@ export default {
     CardContent,
   },
   methods: {
-    deleteKoedo(koedo) {
-      this.$emit('deleted', koedo);
-      captains.log(`You tried to delete ${koedo.to}`);
-    },
-    selectKoedo(koedo) {
-      captains.log(`You tried to select ${koedo.to}`);
-      this.$emit('selected', koedo);
+    selectQuote(quote) {
+      captains.log(`You tried to select ${quote.repoUrl}`);
+      this.$emit('selected', quote);
     },
   },
 };
@@ -34,19 +30,19 @@ export default {
 <template>
   <div>
     <div v-if="errorMessage">{{ errorMessage }}</div>
-    <div v-if="!koedos.length && !errorMessage">
+    <div v-if="!quotes.length && !errorMessage">
       Loading data ...
     </div>
     <ul class="flex-container">
       <li
-        v-for="(koedo) in koedos"
-        :key="koedo.id"
+        v-for="(quote) in quotes"
+        :key="quote.id"
         role="presentation"
       >
         <div class="card">
           <CardContent
-            :repoUrl="koedo.repoUrl"
-            :quoteText="koedo.quoteText"
+            :repoUrl="quote.repoUrl"
+            :quoteText="quote.quoteText"
           />
         </div>
       </li>

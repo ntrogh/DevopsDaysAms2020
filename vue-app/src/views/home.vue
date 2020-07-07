@@ -1,47 +1,45 @@
 <script>
 import { mapActions, mapGetters } from 'vuex';
-import KoedoDetail from './koedos/koedo-detail.vue';
-import KoedoList from './koedos/koedo-list.vue';
+import QuoteList from './quotes/quote-list.vue';
 
 export default {
-  name: 'Koedos',
+  name: 'Quotes',
   data() {
     return {
       errorMessage: '',
       message: '',
-      routePath: '/koedos',
+      routePath: '/quotes',
       selected: null,
-      title: 'My Koedos',
+      title: 'All Quotes',
     };
   },
   components: {
-    KoedoList,
-    KoedoDetail,
+    QuoteList,
   },
   async created() {
-    await this.getKoedos();
+    await this.getQuotes();
   },
   computed: {
-    ...mapGetters('koedos', { koedos: 'koedos' }),
+    ...mapGetters('quotes', { quotes: 'quotes' }),
   },
   methods: {
-    ...mapActions('koedos', [
-      'getKoedosAction',
+    ...mapActions('quotes', [
+      'getQuotesAction',
     ]),
     clear() {
       this.selected = null;
     },
-    async getKoedos() {
+    async getQuotes() {
       this.errorMessage = undefined;
       try {
-        await this.getKoedosAction();
+        await this.getQuotesAction();
       } catch (error) {
         this.errorMessage = 'Unauthorized';
       }
       this.clear();
     },
-    select(koedo) {
-      this.selected = koedo;
+    select(quote) {
+      this.selected = quote;
     },
   },
 };
@@ -50,20 +48,12 @@ export default {
 <template>
   <div class="content-container">
     <div class="columns is-multiline is-variable">
-      <div v-if="koedos">
-        <KoedoList
+      <div v-if="quotes">
+        <QuoteList
           v-if="!selected"
-          :koedos="koedos"
+          :quotes="quotes"
           :errorMessage="errorMessage"
-          @selected="select($event)"
-          @deleted="askToDelete($event)"
-        ></KoedoList>
-        <KoedoDetail
-          v-if="selected"
-          :koedo="selected"
-          @unselect="clear"
-          @save="save"
-        ></KoedoDetail>
+        ></QuoteList>
       </div>
     </div>
   </div>
