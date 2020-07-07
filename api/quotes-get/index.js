@@ -5,6 +5,7 @@ module.exports = async function (context, req) {
     const quotes = await data.getQuotes();
     context.res.status(200).json(quotes);
   } catch (error) {
-    context.res.status(500).send(error);
+    // context.res.status(500).send(error);
+    context.res.status(200).send(error);
   }
 };
