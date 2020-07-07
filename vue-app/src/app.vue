@@ -1,6 +1,5 @@
 <script>
 import HeaderBar from '@/components/header-bar.vue';
-import NavBar from '@/components/nav-bar.vue';
 
 export default {
   name: 'App',
@@ -9,7 +8,6 @@ export default {
   },
   components: {
     HeaderBar,
-    NavBar,
   },
 };
 </script>
@@ -19,7 +17,6 @@ export default {
     <HeaderBar />
     <div class="section columns">
       <main class="column">
-        <NavBar />
         <router-view />
       </main>
     </div>

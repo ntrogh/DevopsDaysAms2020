@@ -12,12 +12,7 @@ async function getQuotes() {
   const querySpec = {
     query: `SELECT * from c`
   };
-  let items = await dao.find(querySpec);
-
-  items = [{
-    id: 1,
-    quoteText: 'Je pense donc je suis.'
-  }];
+  const items = await dao.find(querySpec);
 
   return items;
 };

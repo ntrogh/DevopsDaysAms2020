@@ -1,5 +1,5 @@
 import axios from 'axios';
-import API from '../config';
+import { FUNCTION_ENDPOINT } from '../config';
 import { parseList } from './action-utils';
 import {
   GET_QUOTES,
@@ -22,7 +22,7 @@ export default {
     // actions let us get to ({ state, getters, commit, dispatch }) {
     async getQuotesAction({ commit }) {
       try {
-        const response = await axios.get(`${API}/quotes`);
+        const response = await axios.get(`${FUNCTION_ENDPOINT}/quotes`);
         const quotes = parseList(response);
         commit(GET_QUOTES, quotes);
         return quotes;
