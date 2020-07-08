@@ -29,7 +29,7 @@ module.exports = async function (context, req) {
             let quoteText = match[1].substring(2, match[1].length - 2);
 
             context.res = {
-                body: `{ "quote": "${quoteText}", "octocat_quote": "${quote}" }`
+                body: `{ "quote": "${quoteText}" }`
             };
 
             // Create a data object to be stored in CosmosDB
