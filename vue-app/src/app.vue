@@ -20,6 +20,10 @@ export default {
         <router-view />
       </main>
     </div>
+    <hr />
+    <div>
+      <p class="footer">Interested in having your quote featured on this wall? Check the #DevopsWallofZen coding challenges on <a href="https://github.com/GitHub-Coding-Challenge/devopsdaysams-actions">GitHub.</a></p>
+    </div>
   </div>
 </template>
 
