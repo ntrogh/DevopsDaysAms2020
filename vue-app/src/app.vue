@@ -22,7 +22,7 @@ export default {
     </div>
     <hr />
     <div>
-      <p class="footer">Interested in having your quote featured on this wall? Check the #DevopsWallofZen coding challenges on <a href="https://github.com/GitHub-Coding-Challenge/devopsdaysams-actions">GitHub.</a></p>
+      <p class="footer">Interested in having your quote featured on this wall? Check the GitHub Actions workshop coding challenges on <a href="https://github.com/GitHub-Coding-Challenge/actions-workshop">GitHub.</a></p>
     </div>
   </div>
 </template>

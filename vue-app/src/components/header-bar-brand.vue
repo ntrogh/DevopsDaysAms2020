@@ -13,7 +13,7 @@ export default {
       rel="noopener noreferrer"
     >
       <i aria-hidden="true">
-        <img  src="../assets/devopsdaysams-logo-square.jpg"/>
+        <img  src="../assets/GitHub-Mark.png"/>
       </i>
     </a>
     <router-link to="/" class="navbar-item nav-home">
